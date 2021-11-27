@@ -13,7 +13,7 @@ function setup() {
 
 // }
 function drawLeftBox(){
-  let c1_x = windowWidth / 4, c1_y = windowHeight / 2;
+  let c1_x = windowWidth / 4 + 20, c1_y = windowHeight / 2;
   rect(c1_x-size, c1_y-size, size * 2 -10, size * 2)
   quad(
     c1_x - size,   c1_y-size,
@@ -30,7 +30,7 @@ function drawLeftBox(){
 }
 
 function drawRightBox(){
-  let c1_x = windowWidth * 3 / 4, c1_y = windowHeight / 2;
+  let c1_x = windowWidth * 3 / 4 - 20, c1_y = windowHeight / 2;
   rect(c1_x-size, c1_y-size, size * 2 +10, size * 2)
   quad(
     c1_x - size,   c1_y-size,
