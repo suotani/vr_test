@@ -16,6 +16,12 @@ var l1 = [[-size,-size,size],[size,-size,size],[size,size,size],[-size,size,size
 var l2 = [[-size,-size,-size],[size,-size,-size],[size,size,-size],[-size,size,-size]];
 var w,h;
 let capture;
+var CONSTRAINTS = {
+  audio: false,
+  video: {
+    facingMode: "user"
+  }
+};
 function setup() {
   w = windowWidth
   h = windowHeight
@@ -26,7 +32,7 @@ function setup() {
 	strokeWeight(3);
 	stroke(100,100,255,200);
   line(windowWidth / 2, 0, windowWidth/ 2, windowHeight)
-  capture = createCapture(VIDEO);
+  capture = createCapture(CONSTRAINTS);
   capture.size(width, height);
   capture.hide();
 }
