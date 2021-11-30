@@ -1,0 +1,69 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+  <style> body {padding: 0; margin: 0;} </style>
+</head>
+<body>
+</body>
+</html>
+
+
+<script>
+var l1 = [[-100,-100,100],[100,-100,100],[100,100,100],[-100,100,100]];
+var l2 = [[-100,-100,-100],[100,-100,-100],[100,100,-100],[-100,100,-100]];
+var w,h;
+function setup() {
+  w = windowWidth
+  h = windowHeight
+  createCanvas(windowWidth, windowHeight);
+  background(0)
+	stroke(255);
+	noFill();
+	strokeWeight(3);
+	stroke(100,100,255,200);
+  line(windowWidth / 2, 0, windowWidth/ 2, windowHeight)
+}
+
+function draw(){
+	background(0);
+
+  push();
+  rotate(-0.01)
+  translate(w/3,h/2);
+	for(i=0;i<4;i++){
+		line(l1[i%4][0],l1[i%4][1],l1[(i+1)%4][0],l1[(i+1)%4][1]);
+		line(l2[i%4][0],l2[i%4][1],l2[(i+1)%4][0],l2[(i+1)%4][1]);
+		line(l1[i%4][0],l1[i%4][1],l2[i%4][0],l2[i%4][1]);
+	}
+	
+	pop();
+
+  push();
+  rotate(0.01)
+  translate(w*2/3,h/2);
+	for(i=0;i<4;i++){
+		line(l1[i%4][0],l1[i%4][1],l1[(i+1)%4][0],l1[(i+1)%4][1]);
+		line(l2[i%4][0],l2[i%4][1],l2[(i+1)%4][0],l2[(i+1)%4][1]);
+		line(l1[i%4][0],l1[i%4][1],l2[i%4][0],l2[i%4][1]);
+	}
+	pop();
+
+	for(j=0;j<4;j++){
+		l1[j] = rotate3d(l1[j], 0.01,0.01,0.02);
+		l2[j] = rotate3d(l2[j], 0.01,0.01,0.02);
+	}
+}
+
+function rotate3d(points, u,v,w){
+	var cu = cos(u), su = sin(u);
+	var cv = cos(v), sv = sin(v);
+	var cw = cos(w), sw = sin(w);
+	var [x,y,z] = points;
+	var newX = cv*cw*x - cv*sw*y + sv * z;
+	var newY = (su*sv*cw+cu*sw)*x + (-su*sv*sw+cu*cw)*y + (-su*cv)*z;
+	var newZ = (-cu*sv*cw+su*sw)*x + (cu*sv*sw+su*cu)*y + (cu*cv)*z;
+	return [newX, newY, newZ];
+}
+</script>
