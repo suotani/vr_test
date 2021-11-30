@@ -19,7 +19,7 @@ let capture;
 var CONSTRAINTS = {
   audio: false,
   video: {
-    facingMode: "user"
+    facingMode: { exact: "environment" }
   }
 };
 function setup() {
