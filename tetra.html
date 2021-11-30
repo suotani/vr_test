@@ -40,7 +40,8 @@ function setup() {
 function draw(){
 
 	background(0);
-  image(capture, 0, 0, width, height);
+  image(capture, 0, 0, width/2, height);
+  image(capture, width/2, 0, width/2, height);
 
   push();
   rotate(-0.01)
