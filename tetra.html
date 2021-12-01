@@ -13,7 +13,9 @@
 <script>
 var size = 20
 var l1 = [[-size,-size,size],[size,-size,size],[size,size,size],[-size,size,size]];
+var l1d = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],];
 var l2 = [[-size,-size,-size],[size,-size,-size],[size,size,-size],[-size,size,-size]];
+var l2d = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],];
 var w,h;
 let capture;
 var CONSTRAINTS = {
@@ -44,23 +46,29 @@ function draw(){
   image(capture, width/2, 0, width/3, height);
 
   push();
-  rotate(-0.01)
   translate(w/3,h/2);
+	for(j=0;j<4;j++){
+		l1d[j] = rotate3d(l1[j], 0.02,0.01,0.02);
+		l2d[j] = rotate3d(l2[j], 0.02,0.01,0.02);
+	}
 	for(i=0;i<4;i++){
-		line(l1[i%4][0],l1[i%4][1],l1[(i+1)%4][0],l1[(i+1)%4][1]);
-		line(l2[i%4][0],l2[i%4][1],l2[(i+1)%4][0],l2[(i+1)%4][1]);
-		line(l1[i%4][0],l1[i%4][1],l2[i%4][0],l2[i%4][1]);
+		line(l1d[i%4][0],l1d[i%4][1],l1d[(i+1)%4][0],l1d[(i+1)%4][1]);
+		line(l2d[i%4][0],l2d[i%4][1],l2d[(i+1)%4][0],l2d[(i+1)%4][1]);
+		line(l1d[i%4][0],l1d[i%4][1],l2d[i%4][0],l2d[i%4][1]);
 	}
 	
 	pop();
 
   push();
-  rotate(0.01)
   translate(w*2/3,h/2);
+	for(j=0;j<4;j++){
+		l1d[j] = rotate3d(l1[j], 0,0.01,0.02);
+		l2d[j] = rotate3d(l2[j], 0,0.01,0.02);
+	}
 	for(i=0;i<4;i++){
-		line(l1[i%4][0],l1[i%4][1],l1[(i+1)%4][0],l1[(i+1)%4][1]);
-		line(l2[i%4][0],l2[i%4][1],l2[(i+1)%4][0],l2[(i+1)%4][1]);
-		line(l1[i%4][0],l1[i%4][1],l2[i%4][0],l2[i%4][1]);
+		line(l1d[i%4][0],l1d[i%4][1],l1d[(i+1)%4][0],l1d[(i+1)%4][1]);
+		line(l2d[i%4][0],l2d[i%4][1],l2d[(i+1)%4][0],l2d[(i+1)%4][1]);
+		line(l1d[i%4][0],l1d[i%4][1],l2d[i%4][0],l2d[i%4][1]);
 	}
 	pop();
 
