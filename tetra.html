@@ -19,7 +19,7 @@ let capture;
 var CONSTRAINTS = {
   audio: false,
   video: {
-    facingMode: { exact: "environment" }
+    facingMode: "user"
   }
 };
 function setup() {
@@ -41,7 +41,7 @@ function draw(){
 
 	background(0);
   image(capture, width/6, 0, width/3, height);
-  image(capture, width/3, 0, width/3, height);
+  image(capture, width/2, 0, width/3, height);
 
   push();
   rotate(-0.01)
